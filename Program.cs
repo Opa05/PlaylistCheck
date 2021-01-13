@@ -25,6 +25,7 @@ namespace PlaylistCheck
                 CheckM3u(fi.Name);
             }
 
+            Console.WriteLine("\n\nPress any key!");
             Console.ReadKey();
         }
 
@@ -32,7 +33,7 @@ namespace PlaylistCheck
 
         public static void CheckM3u(string fileName)
         {
-            Console.WriteLine(fileName + ":");
+            Console.Write("\n" + fileName + ":");
             bool errorOccured=false;
 
             if (File.Exists(fileName))
@@ -46,7 +47,7 @@ namespace PlaylistCheck
                         if (File.Exists(outerLine) == false)
                         {
                             errorOccured = true;
-                            Console.WriteLine($" => File existiert nicht:  {outerLine}");                            
+                            Console.Write($"\n => File existiert nicht:  {outerLine}");                            
                         }
                         else
                         {
@@ -60,7 +61,7 @@ namespace PlaylistCheck
                                     if (innerLine == outerLine)
                                     {
                                         errorOccured = true;
-                                        Console.WriteLine($" => Eintrag doppelt:      {outerLine}");
+                                        Console.Write($"\n => Eintrag doppelt:      {outerLine}");
                                     }
                                 }
                             }
@@ -73,12 +74,12 @@ namespace PlaylistCheck
 
                 if (errorOccured == false)
                 {
-                    Console.WriteLine($" : => OK");
+                    Console.Write($"  => OK");
                 }
             }//if (File.Exists(fileName))
             else
             {
-                Console.WriteLine("Error, File existiert nicht: " + fileName);
+                Console.Write($" Error, File existiert nicht: {fileName},\n");
             }
             Console.WriteLine();
 
@@ -88,7 +89,7 @@ namespace PlaylistCheck
 
         public static void CheckPls(string fileName)
         {
-            Console.WriteLine(fileName + ":");
+            Console.Write("\n" + fileName + ":");
             bool errorOccured = false;
 
             if (File.Exists(fileName))
@@ -108,7 +109,7 @@ namespace PlaylistCheck
                             if (File.Exists(outStrSplit[1]) == false)
                             {
                                 errorOccured = true;
-                                Console.WriteLine($" => {outStrSplit[0]} existiert nicht:  {outStrSplit[1]}");
+                                Console.Write($"\n => {outStrSplit[0]} existiert nicht:  {outStrSplit[1]}");
                             }
                             else 
                             {
@@ -128,7 +129,7 @@ namespace PlaylistCheck
                                                 if (innerStrSplit[1] == outStrSplit[1])
                                                 {
                                                     errorOccured = true;
-                                                    Console.WriteLine($" => {outStrSplit[0]} und {innerStrSplit[0]} doppelt!" );
+                                                    Console.Write($"\n => {outStrSplit[0]} und {innerStrSplit[0]} doppelt!" );
                                                 }
 
                                             }
@@ -144,13 +145,13 @@ namespace PlaylistCheck
 
                 if (errorOccured == false)
                 {
-                    Console.WriteLine($" : => OK");
+                    Console.Write($"  => OK");
                 }
 
             }//if (File.Exists(fileName))
             else
             {
-                Console.WriteLine("Error, File existiert nicht: " + fileName);
+                Console.Write($" Error, File existiert nicht: {fileName},\n");
             }
 
             Console.WriteLine();
